@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 from datetime import datetime, timedelta
 
 from aiohttp import ClientSession, request
@@ -10,7 +11,7 @@ from schemas import SheremetievoOutputSchema, VnukovoSchema, SheremetievoSchema,
 
 import asyncio
 
-class Parser:
+class Parser(ABC):
 
     #объект парсер отвечает за получение данных с табло аэропортов
     # в зависимости от ссылки создается объект со своим методом получения данных
@@ -34,7 +35,7 @@ class Parser:
         elif 'https://www.dme.ru/book' in link:
             return super().__new__(DomodedovoParser)
 
-
+    @abstractmethod
     async def get_flights_data(self):
         pass
 
