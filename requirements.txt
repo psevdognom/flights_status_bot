@@ -11,13 +11,17 @@ bs4==0.0.1
 certifi==2020.12.5
 chardet==4.0.0
 FlightRadarAPI==1.1.5
+furl==2.1.1
 idna==2.10
 iso8601==0.1.14
 marshmallow==3.10.0
 multidict==5.1.0
+orderedmultidict==1.0.1
+pydantic==1.8.1
 PyPika==0.44.1
 pytz==2020.5
 requests==2.25.1
+six==1.15.0
 soupsieve==2.2
 tortoise-orm==0.16.21
 typing-extensions==3.7.4.3
