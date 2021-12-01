@@ -4,7 +4,6 @@ from aiogram import executor
 from tortoise import Tortoise, run_async
 
 from tg_bot.loader import dp
-from tg_bot.bot import start
 from updaters import Updater
 
 
@@ -29,10 +28,5 @@ async def main():
 
 
 if __name__ == '__main__':
-    # loop = asyncio.get_event_loop()
-    # loop.run_until_complete(main())
-    # asyncio.run(main())
-
-    # dp.loop.create_task(main())
     dp.loop.create_task(main())
     executor.start_polling(dp, skip_updates=True)

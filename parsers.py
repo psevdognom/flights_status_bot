@@ -219,14 +219,14 @@ class PulkovoParser(Parser):
 
 async def main():
 
-    # parser = Parser('https://www.svo.aero/bitrix/')
-    # data = await parser.get_page()
-    # await parser.get_flights_data()
-    # flights = await parser.flights
-    # print(flights)
-    # dom_parser = Parser('https://www.dme.ru/book')
-    # fl = await dom_parser.get_flights_data()
-    # print(fl)
+    parser = Parser('https://www.svo.aero/bitrix/')
+    data = await parser.get_page()
+    await parser.get_flights_data()
+    flights = await parser.flights
+    print(flights)
+    dom_parser = Parser('https://www.dme.ru/book')
+    fl = await dom_parser.get_flights_data()
+    print(fl)
     vnukovo_parser = Parser('http://www.vnukovo.ru/flights/online-timetable/#tab-sortie')
     data = await vnukovo_parser.get_flights_data()
 
