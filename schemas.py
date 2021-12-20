@@ -219,7 +219,6 @@ class DomodedovoOutputSchema(Schema):
             on_board_time = datetime.datetime.now()
         else:
             if int(departure_time.hour) > int(data['updated_on_board_time'].split(':')[0]):
-                print(data['updated_departure_time'])
                 on_board_time = datetime.datetime(year=int(data['updated_departure_time'].split(' ')[2]),
                                                   month=int(data['updated_departure_time'].split(' ')[1]),
                                                   day=int(data['updated_departure_time'].split(' ')[0]),

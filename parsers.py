@@ -189,7 +189,6 @@ class DomodedovoParser(Parser):
                 row_schema.update({'departure_time': departure_time})
                 row_schema.update({'on_board_time': on_board_time})
                 flights.append(row_schema)
-        print(self._link)
         return flights
 
 

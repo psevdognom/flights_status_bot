@@ -3,7 +3,7 @@ import asyncio
 from aiogram import executor
 from tortoise import Tortoise, run_async
 
-from tg_bot.loader import dp
+from tg_bot.bot import dp
 from updaters import Updater
 
 
@@ -19,7 +19,6 @@ async def init_db():
         await sheremetievo_updater.update()
         await domodedovo_updater.update()
         await vnukovo_updater.update()
-        print('bui')
         await asyncio.sleep(120)
 
 async def main():
