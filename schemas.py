@@ -118,23 +118,27 @@ class SheremetievoOutputSchema(Schema):
     @post_load
     def make_object(self, data, **kwargs):
         try:
-            departure_time = datetime.datetime.strptime(data['t_st'],
+            try:
+                departure_time = datetime.datetime.strptime(data['t_st'],
                                          '%Y-%m-%dT%H:%M:%S%z') + datetime.timedelta(hours=3)
-        except Exception:
-            departure_time = datetime.datetime.now()
-        try:
-            on_board_time = datetime.datetime.strptime(data['t_boarding_start'],
+            except Exception:
+                departure_time = datetime.datetime.now()
+            try:
+                on_board_time = datetime.datetime.strptime(data['t_boarding_start'],
                                           '%Y-%m-%dT%H:%M:%S%z') + datetime.timedelta(hours=3)
-        except Exception:
-            on_board_time = datetime.datetime.strptime(data['on_board_time'],
+            except Exception:
+                on_board_time = datetime.datetime.strptime(data['on_board_time'],
                                           '%Y-%m-%dT%H:%M:%S%z') + datetime.timedelta(hours=3)
-        flight = Flight(airport=data['airport'],
+            flight = Flight(airport=data['airport'],
                         number=data['number'],
                         on_board_time=on_board_time,
                         departure_time=departure_time,
                         gate=data['gate'],
                         )
-        return flight
+            return flight
+        except Exception:
+            return asyncio.coroutine
+
 
 
 class SheremetievoMainSchema(Schema):

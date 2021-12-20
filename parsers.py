@@ -151,12 +151,7 @@ class SheremetievoParser(Parser):
 
     async def get_flights_data(self):
         data = await self.get_json()
-        print(self._link)
         return data['items']
-
-    # @async_property
-    # async def flights(self):
-    #     pass
 
 
 
