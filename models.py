@@ -23,9 +23,9 @@ class Flight(Model):
     @property
     def flight_info_message(self):
         if self.gate:
-            return MESSAGES['flight_info'].format(number=self.number, gate=self.gate, time=self.on_board_time)
+            return MESSAGES['flight_info'].format(number=self.number, gate=self.gate, time=self.on_board_time.strftime('%H:%M'))
         else:
-            return MESSAGES['flight_info_no_gate_message'].format(number=self.number, time=self.on_board_time)
+            return MESSAGES['flight_info_no_gate_message'].format(number=self.number, time=self.on_board_time.strftime('%H:%M'))
 
     @property
     def gate_changed_message(self):
@@ -33,11 +33,12 @@ class Flight(Model):
 
     @property
     def time_changed_message(self):
-        return MESSAGES['time_changed_message'].format(number=self.number, time=self.on_board_time)
+        return MESSAGES['time_changed_message'].format(number=self.number, time=self.on_board_time.strftime('%H:%M'))
 
     @property
     def time_and_gate_changed_message(self):
-        return MESSAGES['time_and_gate_changed_message'].format(number=self.number, gate=self.gate, time=self.on_board_time)
+        return MESSAGES['time_and_gate_changed_message'].format(number=self.number, gate=self.gate,
+                                                                time=self.on_board_time.strftime('%H:%M'))
 
     @property
     def has_departed(self):
