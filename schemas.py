@@ -137,7 +137,7 @@ class SheremetievoOutputSchema(Schema):
                         )
             return flight
         except Exception:
-            return asyncio.coroutine
+            pass
 
 
 
