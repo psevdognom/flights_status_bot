@@ -102,7 +102,6 @@ class VnukovoParser(Parser):
         return resp
 
     async def get_flights_data(self):
-        print(self._link)
         flights = list()
         page = await self.get_page()
         today_resp = self.get_flights_from_page(page)

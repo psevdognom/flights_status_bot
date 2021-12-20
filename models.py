@@ -57,6 +57,9 @@ class Flight(Model):
     def __str__(self):
         return self.number
 
+    def __repr__(self):
+        return self.number
+
     async def notify_subscribers(self, message):
         try:
             subscribers = [flight_to_chat_id.chat_id
