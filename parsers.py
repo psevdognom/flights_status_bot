@@ -62,7 +62,7 @@ class Parser(ABC):
         for flight_json in validated_data:
             flight = self._output_schema().load(flight_json)
             flights.append(flight)
-        return flights
+        return [flight for flight in flights if flight]
 
 
 class VnukovoParser(Parser):
