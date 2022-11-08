@@ -317,14 +317,3 @@ class TestSchema(Schema):
     @post_load
     def make_object(self):
         pass
-
-
-
-
-# if __name__ == '__main__':
-#     data = {'id': 1, 'dasdas':'dasd',
-#             'kek': 'lol', 'company': {"dasda": "zaadsda", 'name': 'SU'}}
-#
-#     schema = VnukovoOutputSchema()
-#     r = schema.load(data)
-#     print(r)
