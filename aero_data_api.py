@@ -19,7 +19,7 @@ class AeroDataBox:
 
 
 if __name__ == '__main__':
-    import pandas as pd
+    # import pandas as pd
     # from pandas.compat import StringIO
     with open('airports.dat', 'r') as f:
         # df = pd.read_csv(StringIO(f.readline()), sep=",", engine='python')

@@ -13,7 +13,6 @@ async def get_flight(flight_number):
     if flight_number:
         try:
             flight = await Flight.filter(number=flight_number).first()
-            # flight_to_chat_id = FlightToChatId(flight=flight.number)
             return flight.flight_info_message
         except Exception:
             return 'Такого рейса нет в системе'

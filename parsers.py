@@ -62,7 +62,7 @@ class Parser(ABC):
         for flight_json in validated_data:
             flight = self._output_schema().load(flight_json)
             flights.append(flight)
-        return flights
+        return [flight for flight in flights if flight]
 
 
 class VnukovoParser(Parser):
@@ -102,7 +102,6 @@ class VnukovoParser(Parser):
         return resp
 
     async def get_flights_data(self):
-        print(self._link)
         flights = list()
         page = await self.get_page()
         today_resp = self.get_flights_from_page(page)
@@ -151,12 +150,7 @@ class SheremetievoParser(Parser):
 
     async def get_flights_data(self):
         data = await self.get_json()
-        print(self._link)
         return data['items']
-
-    # @async_property
-    # async def flights(self):
-    #     pass
 
 
 
@@ -195,7 +189,6 @@ class DomodedovoParser(Parser):
                 row_schema.update({'departure_time': departure_time})
                 row_schema.update({'on_board_time': on_board_time})
                 flights.append(row_schema)
-        print(self._link)
         return flights
 
 
@@ -219,14 +212,14 @@ class PulkovoParser(Parser):
 
 async def main():
 
-    # parser = Parser('https://www.svo.aero/bitrix/')
-    # data = await parser.get_page()
-    # await parser.get_flights_data()
-    # flights = await parser.flights
-    # print(flights)
-    # dom_parser = Parser('https://www.dme.ru/book')
-    # fl = await dom_parser.get_flights_data()
-    # print(fl)
+    parser = Parser('https://www.svo.aero/bitrix/')
+    data = await parser.get_page()
+    await parser.get_flights_data()
+    flights = await parser.flights
+    print(flights)
+    dom_parser = Parser('https://www.dme.ru/book')
+    fl = await dom_parser.get_flights_data()
+    print(fl)
     vnukovo_parser = Parser('http://www.vnukovo.ru/flights/online-timetable/#tab-sortie')
     data = await vnukovo_parser.get_flights_data()
 
