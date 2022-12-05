@@ -217,12 +217,13 @@ async def main():
     await parser.get_flights_data()
     flights = await parser.flights
     print(flights)
-    dom_parser = Parser('https://www.dme.ru/book')
-    fl = await dom_parser.get_flights_data()
-    print(fl)
+    # dom_parser = Parser('https://www.dme.ru/book')
+    # fl = await dom_parser.get_flights_data()
+    # print(fl)
     vnukovo_parser = Parser('http://www.vnukovo.ru/flights/online-timetable/#tab-sortie')
     data = await vnukovo_parser.get_flights_data()
+    print(data)
 
 if __name__ == '__main__':
-    loop = asyncio.get_event_loop()
+    loop = asyncio.new_event_loop()
     loop.run_until_complete(main())

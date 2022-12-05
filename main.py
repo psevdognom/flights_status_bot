@@ -18,7 +18,7 @@ async def init_db():
     while True:
         await sheremetievo_updater.update()
         await domodedovo_updater.update()
-        await vnukovo_updater.update()
+        # await vnukovo_updater.update()
         await asyncio.sleep(120)
 
 async def main():
